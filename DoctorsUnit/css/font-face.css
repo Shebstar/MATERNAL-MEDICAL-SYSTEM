@@ -1,0 +1,13 @@
+/* poppins-100 - latin */
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 100;
+  src: url("../fonts/aclonica/Aclonica.ttf"); /* IE9 Compat Modes */
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 100;
+  src: url("../fonts/actor/Actor-Regular.ttf"); /* IE9 Compat Modes */
+}
