@@ -1,0 +1,66 @@
+.main {
+    width: 50%;
+    max-width: 1500px;
+}
+
+select {
+    padding: 5px;
+}
+
+button {
+    padding: 5px 15px;
+}
+
+a {
+    color: #1155a3;
+}
+
+.space {
+    margin: 10px 0px 10px 0px;
+}
+
+.header {
+    background: #003267;
+    background: linear-gradient(to right, #011329 0%, #00639e 44%, #011329 100%);
+    padding: 20px 10px;
+    color: white;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.75);
+}
+
+.header a {
+    color: white;
+}
+
+.header h1 a {
+    text-decoration: none;
+}
+
+.header h1 {
+    padding: 0px;
+    margin: 0px;
+}
+
+.main {
+    padding: 10px;
+}
+
+.column-main {
+    margin-left: 220px;
+}
+
+.column-left {
+    float: left;
+    width: 220px;
+}
+
+.toolbar {
+    margin: 10px 0px;
+}
+
+.toolbar>.toolbar-item:not(:last-child) {
+    border-right: 1px solid #ccc;
+}
+
+.toolbar-item {
+    padding: 0px 10px;
+}
