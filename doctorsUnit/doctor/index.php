@@ -24,9 +24,9 @@ $row = get_from_table_sql_one($con, $sql);
 $full_name = $row['full_name'];
 
 
-$sql = "SELECT count(id) as 'total_online' FROM $table_users WHERE is_online='1'";
+$sql = "SELECT count(AppointNo) as 'appointments' FROM $table_appointments WHERE doctor_uname='$my_username'";
 $row = get_from_table_sql_one($con, $sql);
-$total_online = $row['total_online'];
+$appointments = $row['appointments'];
 
 $sql = "SELECT count(id) as 'total_mikeka_sold', sum(amount) as 'total_amount' FROM $table_mikeka 
     WHERE date_time LIKE '$today_date%' AND is_payed='1' AND is_printed='1' AND is_cancelled='0'";
@@ -140,7 +140,7 @@ if ($found == 1) {
                         <li>
                             <a href="#" onclick="appointments_show()">
                                 <i class="fas fa-list-alt"></i>Appointments</a>
-                            <span class="inbox-num">3</span>
+                            <span class="inbox-num"><?php echo $appointments; ?></span>
                         </li>
                         <li>
                             <a href="#" onclick="schedule_show()">
@@ -208,7 +208,7 @@ if ($found == 1) {
                             <li>
                                 <a href="#" onclick="appointments_show()">
                                     <i class="fas fa-list-alt"></i>Appointments</a>
-                                <span class="inbox-num">3</span>
+                                <span class="inbox-num"><?php echo $appointments; ?></span>
                             </li>
                             <li>
                                 <a href="#" onclick="schedule_show()">
@@ -328,7 +328,7 @@ if ($found == 1) {
                                                                 </div>
                                                                 <div class="text">
                                                                     <h5 class="name">Michelle Sims</h5>
-                                                                    <p>Purus feugiat finibus</p>
+                                                                    <p>Rescheduled an Appointment</p>
                                                                 </div>
                                                             </div>
                                                             <div class="au-message__item-time">
