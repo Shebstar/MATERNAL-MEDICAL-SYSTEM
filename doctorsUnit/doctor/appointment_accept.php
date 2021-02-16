@@ -5,13 +5,14 @@ include "../config_settings.php";
 if (!trim($_SESSION['id']) and !isset($_SESSION['username'])) {
     header($root_system_url);
 }
+$username = $_SESSION['username'];
 $AppointNo = $_REQUEST['AppointNo'];
 $con = connect_to_database($myServer, $myUser, $myPass, $myDB);
 $sql = "UPDATE $table_appointments SET is_accepted='1' WHERE AppointNo='$AppointNo' AND doctor_uname='$username'";
 $result = excute_command_inherite_con($con, $sql);
 if ($result == 1) {
     $html_response = "Appointment Successfull Accepted
-			&nbsp;&nbsp;<button class='btn btn-success' onclick='this.disabled=true;appointments_show()'>Show Appointments... </button>";
+			&nbsp;&nbsp;<a href=\"javascript:window.top.location.reload(true)\" class='btn btn-success' onclick='this.disabled=true;appointments_show()'>Show Appointments... </a>";
     $text = "Appintment successful Accepted";
     $response_ = array("code" => 200, "error" => "", "html_response" => "$html_response", "text" => "$text");
 } else {

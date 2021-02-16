@@ -22,7 +22,7 @@ foreach ($rows as $row) {
     $created_at = $row['created_at'];
     $updated_at = $row['updated_at'];
     $full_name = "$FirstNameAP $LastNameAP";
-    $sql_ = "SELECT * FROM $table_client WHERE name='$UsernameAP'";
+    $sql_ = "SELECT * FROM $table_client WHERE name='$UsernameAP' ORDER BY created_at DESC";
     $rowx = get_from_table_sql_one($con, $sql_);
     $Email = $rowx['email'];
     $tbody .= "
@@ -35,6 +35,7 @@ foreach ($rows as $row) {
             <span><a href='#'><i class='fa fa-map-marker-alt'></i> $CityAP</a></span><br>
             </div>
         </td>
+        <td>$created_at</td>
         <td><span>
             <button class='btn bg-success' onclick='accept_appointment($AppointNo)'>Accept</button>
             <button class='btn bg-danger' onclick='deny_appointment()'>Deny</button>

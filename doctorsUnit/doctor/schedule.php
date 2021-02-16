@@ -24,7 +24,6 @@ $days = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
                                         ?>
                                     </div>
                                     <div id="_display">
-                                        jghjgfhgfgf
                                     </div>
                                 </div>
                             </div>

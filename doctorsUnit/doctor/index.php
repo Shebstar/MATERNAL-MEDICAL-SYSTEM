@@ -23,33 +23,10 @@ $sql = "SELECT * FROM $table_users WHERE id=$id";
 $row = get_from_table_sql_one($con, $sql);
 $full_name = $row['full_name'];
 
-
-$sql = "SELECT count(AppointNo) as 'appointments' FROM $table_appointments WHERE doctor_uname='$my_username'";
+$sql = "SELECT count(AppointNo) as 'appointments' FROM $table_appointments WHERE doctor_uname='$my_username' AND is_accepted='0'";
 $row = get_from_table_sql_one($con, $sql);
 $appointments = $row['appointments'];
 
-$sql = "SELECT count(id) as 'total_mikeka_sold', sum(amount) as 'total_amount' FROM $table_mikeka 
-    WHERE date_time LIKE '$today_date%' AND is_payed='1' AND is_printed='1' AND is_cancelled='0'";
-$row = get_from_table_sql_one($con, $sql);
-$total_mikeka_sold = $row['total_mikeka_sold'];
-$total_amount_per_day = $row['total_amount'];
-$total_amount_per_day = formatMoney($total_amount_per_day, 0);
-
-$sql = "SELECT sum(amount) as 'total_amount' FROM $table_mikeka WHERE is_payed='1' AND is_printed='1' AND is_cancelled='0'";
-$row = get_from_table_sql_one($con, $sql);
-$total_amount = $row['total_amount'];
-$total_amount = formatMoney($total_amount, 0);
-//-------------------------------
-$sql_cancelled = "SELECT count(id) as 'cancelled', sum(amount) as 'cancelled_sales' FROM $table_mikeka WHERE date_time LIKE '$today_date%' AND is_cancelled='1' AND is_payed='1' AND is_printed='1'";
-$row_cancelled = get_from_table_sql_one($con, $sql_cancelled);
-$cancelled_sales = $row_cancelled['cancelled_sales'];
-if ($cancelled_sales == "") {
-    $cancelled_sales = 0;
-}
-$cancelled = $row_cancelled['cancelled'];
-$sql = "SELECT * FROM $table_expenses WHERE date_time LIKE '$today_date%' LIMIT 10";
-$con = connect_to_database($myServer, $myUser, $myPass, $myDB);
-$rows = get_from_table_sql($con, $sql);
 $tbody = "";
 $k = 1;
 foreach ($rows as $row) {
@@ -145,7 +122,6 @@ if ($found == 1) {
                         <li>
                             <a href="#" onclick="schedule_show()">
                                 <i class="fas fa-calendar-alt"></i>Schedule</a>
-                            <span class="inbox-num">3</span>
                         </li>
                     </ul>
                 </nav>
@@ -213,7 +189,6 @@ if ($found == 1) {
                             <li>
                                 <a href="#" onclick="schedule_show()">
                                     <i class="fas fa-calendar-alt"></i>Schedule</a>
-                                <span class="inbox-num">3</span>
                             </li>
                         </ul>
                     </nav>
@@ -359,8 +334,7 @@ if ($found == 1) {
                 <!-- END PAGE CONTAINER-->
             </div>
         </div>
-
-
+        <script src="../vendor/sweetalert/sweetalert.min.js"></script>
         <script type="text/javascript" src="../js_mode/base64.js"></script>
         <script type="text/javascript" src="../js_mode/common.js"></script>
         <!-- Jquery JS-->
