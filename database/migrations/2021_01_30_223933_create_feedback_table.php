@@ -16,7 +16,11 @@ class CreateFeedbackTable extends Migration
         Schema::create('feedback', function (Blueprint $table) {
             $table->id('FeedId')->unique();
             $table->text('FeedDescription');
+            $table->string('staff');
             $table->timestamps();
+            $table->unsignedBigInteger('AppointId');
+
+            $table->foreign('AppointId')->references('AppointNo')->on('appointments');
         });
     }
 

@@ -5,7 +5,7 @@
             <b style ="float:right;"> Total users
                 <span class="badge badge-danger">{{ count($users) }}</span>
             </b>
-        </h2>
+        </h2> 
     </x-slot>
 <h1>Appointment scheduling</h1>
     <div class="py-12">
@@ -46,7 +46,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <label for="validationCustom03" class="form-label">City</label>
                 <input type="text" class="form-control" name="City" required>
                 <div class="invalid-feedback">

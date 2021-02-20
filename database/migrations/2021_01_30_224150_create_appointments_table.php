@@ -23,6 +23,9 @@ class CreateAppointmentsTable extends Migration
             $table->string('Gender');
             $table->integer('ZIPCODE');
             $table->timestamps(); 
+            $table->unsignedBigInteger('user_id');
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
